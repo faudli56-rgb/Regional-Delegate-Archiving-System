@@ -26,11 +26,24 @@ async function login() {
             passwordHash: pHash
         };
 
+        // التعديل هنا: إضافة headers لمنع حظر CORS
         fetch(GAS_API_URL, {
             method: 'POST',
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8"
+            },
             body: JSON.stringify(payload)
         })
-        .then(res => res.json())
+        .then(async res => {
+            // التحقق مما إذا كان الرد ليس JSON (مثل صفحات خطأ جوجل)
+            const text = await res.text();
+            try {
+                return JSON.parse(text);
+            } catch(e) {
+                console.error("الخادم لم يرسل JSON:", text);
+                throw new Error("استجابة الخادم غير صالحة.");
+            }
+        })
         .then(data => {
             if(data.success) {
                 sessionStorage.setItem('sys_user', u);
@@ -46,7 +59,8 @@ async function login() {
             }
         })
         .catch(err => {
-            errorDiv.innerText = "خطأ في الاتصال بالخادم.";
+            console.error("تفاصيل الخطأ:", err);
+            errorDiv.innerText = "خطأ في الاتصال بالخادم. تحقق من الـ Console.";
             errorDiv.style.display = 'block';
         });
     }
