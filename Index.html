@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام أرشيف مندوب المنطقة</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <!-- شاشة تسجيل الدخول المحمية -->
+    <div id="loginScreen" class="overlay">
+        <div class="login-box">
+            <h2>نظام الأرشيف الآمن</h2>
+            <p>مرحباً بك، يرجى تسجيل الدخول</p>
+            <input type="text" id="username" placeholder="اسم المستخدم (مثال: admin1 أو admin2)">
+            <input type="password" id="password" placeholder="كلمة المرور">
+            <button class="btn-primary" onclick="login()">تسجيل الدخول</button>
+            <div id="loginError" style="color: #ff4d4d; margin-top: 10px; display: none;"></div>
+        </div>
+    </div>
+
+    <!-- الإطار الرئيسي للنظام بعد الدخول -->
+    <div id="appContainer" style="display:none;">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h2>أرشيف المنطقة</h2>
+                <span id="userRole" class="badge"></span>
+            </div>
+            <ul>
+                <li><a href="#" onclick="loadPage('Dashboard.html')">📊 لوحة التحكم</a></li>
+                <li><a href="#" onclick="loadPage('Upload.html')">📤 أرشفة سند جديد</a></li>
+                <li><a href="#" onclick="loadPage('Search.html')">🔍 البحث الشامل</a></li>
+                <li style="margin-top: auto;"><button onclick="logout()" class="logout-btn">🚪 تسجيل خروج</button></li>
+            </ul>
+        </nav>
+        <main class="content">
+            <iframe id="mainFrame" src="Dashboard.html" frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <script src="App.js"></script>
+    <script>
+        // التحقق من وجود جلسة نشطة عند فتح الصفحة
+        window.onload = () => {
+            if (sessionStorage.getItem('sys_token')) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('appContainer').style.display = 'flex';
+                document.getElementById('userRole').innerText = sessionStorage.getItem('sys_role');
+            }
+        };
+        
+        function loadPage(page) {
+            document.getElementById('mainFrame').src = page;
+        }
+    </script>
+</body>
+</html>

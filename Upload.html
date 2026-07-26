@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Style.css">
+    <style> body { background: transparent; padding: 20px; } </style>
+</head>
+<body>
+    <div class="card">
+        <h2>إضافة سند جديد للأرشيف</h2>
+        <p>يمكنك رفع صور (JPG, PNG)، ملفات PDF، أو التصوير المباشر من كاميرا الجوال.</p>
+        
+        <div class="upload-area">
+            <input type="file" id="fileInput" accept="image/*,application/pdf" capture="environment" multiple class="file-input">
+        </div>
+        
+        <button class="btn-primary" onclick="window.parent.uploadFiles(document.getElementById('fileInput'))" style="width: 100%; margin-top: 20px; font-size: 1.1em;">
+            📤 رفع وأرشفة وتطبيق OCR
+        </button>
+        
+        <div id="loader" class="hidden" style="text-align: center; margin-top: 20px;">
+            <div class="spinner"></div>
+            <p>جاري المعالجة، الحفظ في Drive، واستخراج النصوص... يرجى الانتظار</p>
+        </div>
+    </div>
+</body>
+</html>

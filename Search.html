@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Style.css">
+    <style> body { background: transparent; padding: 20px; } </style>
+</head>
+<body>
+    <div class="card">
+        <h2>البحث في الأرشيف</h2>
+        <div class="search-grid">
+            <input type="text" id="s_receipt" placeholder="رقم السند">
+            <input type="text" id="s_name" placeholder="اسم المستلم">
+            <input type="text" id="s_phone" placeholder="رقم الهاتف">
+            <button class="btn-primary" onclick="window.parent.searchData(
+                document.getElementById('s_receipt').value,
+                document.getElementById('s_name').value,
+                document.getElementById('s_phone').value
+            )">بحث الآن</button>
+        </div>
+    </div>
+    
+    <div id="resultsArea"></div>
+</body>
+</html>

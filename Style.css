@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+:root {
+    --primary: #1e3a8a;
+    --secondary: #2563eb;
+    --bg: #f3f4f6;
+    --text: #1f2937;
+    --card-bg: #ffffff;
+}
+
+* { box-sizing: border-box; font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+
+/* شاشة تسجيل الدخول */
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0f172a; display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.login-box { background: #1e293b; padding: 40px; border-radius: 12px; text-align: center; color: white; width: 100%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+.login-box h2 { margin-bottom: 10px; color: #38bdf8; }
+.login-box p { margin-bottom: 20px; color: #94a3b8; font-size: 0.9em; }
+.login-box input { display: block; width: 100%; margin-bottom: 15px; padding: 12px; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 6px; outline: none; }
+.login-box button { width: 100%; padding: 12px; font-weight: bold; border-radius: 6px; }
+
+/* الهيكل الجانبي (Sidebar) */
+#appContainer { display: flex; width: 100%; height: 100%; }
+.sidebar { width: 260px; background: var(--card-bg); display: flex; flex-direction: column; box-shadow: -2px 0 10px rgba(0,0,0,0.05); z-index: 10; }
+.sidebar-header { padding: 20px; border-bottom: 1px solid #e5e7eb; text-align: center; }
+.sidebar h2 { color: var(--primary); font-size: 1.2em; margin-bottom: 10px; }
+.badge { background: #dbeafe; color: #1e40af; padding: 4px 8px; border-radius: 12px; font-size: 0.8em; font-weight: bold; }
+.sidebar ul { list-style: none; padding: 15px; display: flex; flex-direction: column; height: 100%; }
+.sidebar li { margin-bottom: 10px; }
+.sidebar a, .sidebar button { display: flex; align-items: center; padding: 12px 15px; text-decoration: none; color: var(--text); border-radius: 8px; width: 100%; background: none; border: none; cursor: pointer; font-size: 1em; transition: 0.3s; }
+.sidebar a:hover { background: #eff6ff; color: var(--secondary); }
+.logout-btn { color: #dc2626 !important; margin-top: auto; background: #fef2f2 !important; }
+.logout-btn:hover { background: #fee2e2 !important; }
+
+/* المحتوى */
+.content { flex: 1; display: flex; flex-direction: column; }
+iframe { width: 100%; height: 100%; border: none; }
+
+/* عناصر الواجهة العامة */
+.card { background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+.btn-primary { background: var(--secondary); color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+.btn-primary:hover { background: var(--primary); }
+.btn-share { background: #25D366; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+.hidden { display: none !important; }
+
+/* الرفع والبحث */
+.file-input { display: block; width: 100%; padding: 15px; border: 2px dashed #cbd5e1; border-radius: 8px; text-align: center; background: #f8fafc; cursor: pointer; }
+.search-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+.search-grid input { padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; }
+
+/* الإحصائيات والنتائج */
+.dashboard-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.stat-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; border-bottom: 4px solid var(--secondary); }
+.stat-number { font-size: 2em; font-weight: bold; margin-top: 10px; color: var(--text); }
+
+.result-card { background: white; padding: 20px; margin-bottom: 15px; border: 1px solid #e5e7eb; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; justify-content: space-between; align-items: center; }
+.result-details p { margin-bottom: 5px; }
+.spinner { border: 4px solid rgba(0,0,0,0.1); width: 40px; height: 40px; border-radius: 50%; border-left-color: var(--secondary); animation: spin 1s linear infinite; margin: 0 auto 10px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
